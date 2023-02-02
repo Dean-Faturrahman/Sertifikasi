@@ -51,6 +51,11 @@ class DessertFragment : Fragment() {
         rvMenu.adapter = MenuAdapter(listDessert)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        listDessert.clear()
+    }
+
     companion object {
         private const val DESSERT = "Dessert"
     }

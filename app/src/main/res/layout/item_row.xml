@@ -64,7 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="0dp"
-            card_view:cardBackgroundColor="@color/teal_200"
+            card_view:cardBackgroundColor="@color/cream_200"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toEndOf="@+id/penjelasan_menu"
             card_view:layout_constraintStart_toStartOf="parent">

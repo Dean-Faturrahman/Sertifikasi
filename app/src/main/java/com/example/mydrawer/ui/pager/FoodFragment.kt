@@ -31,19 +31,20 @@ class FoodFragment : Fragment() {
         val dataJenis = resources.getStringArray(R.array.menu_jenis)
         val dataPenjelasan = resources.getStringArray(R.array.menu_penjelasan)
         val dataHarga = resources.getStringArray(R.array.menu_harga)
-        for (i in dataKode.indices) {
-            if (dataJenis[i] == MAKANAN) {
-                val menu = Menu(
-                    dataKode[i],
-                    dataNama[i],
-                    dataJenis[i],
-                    dataPenjelasan[i],
-                    dataHarga[i],
-                )
-                listFood.add(menu)
+        if (listFood.isEmpty()) {
+            for (i in dataKode.indices) {
+                if (dataJenis[i] == MAKANAN) {
+                    val menu = Menu(
+                        dataKode[i],
+                        dataNama[i],
+                        dataJenis[i],
+                        dataPenjelasan[i],
+                        dataHarga[i],
+                    )
+                    listFood.add(menu)
+                }
             }
         }
-
         return inflater.inflate(R.layout.fragment_food, container, false)
     }
 
@@ -55,6 +56,10 @@ class FoodFragment : Fragment() {
         rvMenu.adapter = MenuAdapter(listFood)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        listFood.clear()
+    }
     companion object {
         private const val MAKANAN = "Makanan"
     }

@@ -69,7 +69,9 @@ class OrderFragment : Fragment() {
     @SuppressLint("SetTextI18n")
     private fun timeDialog() {
         val timeSetListener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
-            binding.inputJam.setText("$hour:$minute")
+            calendar.set(Calendar.HOUR, hour)
+            calendar.set(Calendar.MINUTE, minute)
+            setTime()
         }
 
         binding.inputJam.setOnClickListener {
@@ -81,6 +83,12 @@ class OrderFragment : Fragment() {
                 true
             ).show()
         }
+    }
+
+    private fun setTime() {
+        val customFormat = "hh:mm"
+        val format = SimpleDateFormat(customFormat, Locale.US)
+        binding.inputJam.setText(format.format(calendar.time))
     }
 
     override fun onDestroyView() {

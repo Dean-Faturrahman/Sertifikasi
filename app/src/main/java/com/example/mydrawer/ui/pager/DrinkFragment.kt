@@ -52,6 +52,11 @@ class DrinkFragment : Fragment() {
         rvMenu.adapter = MenuAdapter(listDrink)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        listDrink.clear()
+    }
+
     companion object {
         private const val MINUMAN = "Minuman"
     }
